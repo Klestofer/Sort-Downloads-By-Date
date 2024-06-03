@@ -1,13 +1,12 @@
-{
+﻿{
   "author": "Dima PM",
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Sort Downloads By Date",
-  "version": "0.1",
+  "version": "0.1.1",
   "description": "Places downloaded files in subfolders with current date",
 
   "background": {
-    "scripts": [ "sw.js" ],
-    "persistent": false
+    "service_worker": "sw.js"
   },
 
   "permissions": [ "downloads" ]

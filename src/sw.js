@@ -1,13 +1,13 @@
 'use strict';
-const l = console.log.bind(console);
+const l = console.log;
 
 
-chrome.downloads.onDeterminingFilename.addListener(function (downloadItem, suggest) {
+chrome.downloads.onDeterminingFilename.addListener(function(downloadItem, suggest) {
   l('downloads.onDeterminingFilename()', downloadItem);
 
   const separator = '-';
   const date = new Date();
-  let filename = date.getFullYear() + separator + pad2(date.getMonth() + 1) + separator + pad2(date.getDate()) + '/' + downloadItem.filename;
+  const filename = date.getFullYear() + separator + pad2(date.getMonth() + 1) + separator + pad2(date.getDate()) + '/' + downloadItem.filename;
   l(filename);
   suggest({ filename });
 });
@@ -16,9 +16,5 @@ chrome.downloads.onDeterminingFilename.addListener(function (downloadItem, sugge
 
 
 function pad2(num) {
-  let str = num.toString();
-  if (num < 10) {
-    str = '0' + str;
-  }
-  return str;
+  return num.toString().padStart(2, '0');
 }
